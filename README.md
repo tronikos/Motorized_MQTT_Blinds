@@ -1,9 +1,5 @@
 # Motorized_MQTT_Blinds
 
-I forked to add a couple of other base sizes. This is a great project to get the idea of how things work, but the contollers weren't staying connected with my HomeAssistant instance. I ultimately use the hardware from this repo with [Tasmota](https://github.com/tasmota/tasmotizer) configured in [Cover mode](https://tasmota.github.io/docs/Blinds-and-Shutters/#using-stepper-motors) instead. The instructions look daunting, but it takes longer to read than to set up, and it's been running rock solid for months now...
-
-Make sure you use 2208's for noise control, otherwise you can have a rude awakening!
-
 This repository is to accompany my Motorized_MQTT_Blinds video:
 
 [![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/1O_1gUFumQM/0.jpg)](https://www.youtube.com/watch?v=1O_1gUFumQM)
@@ -11,7 +7,7 @@ This repository is to accompany my Motorized_MQTT_Blinds video:
 ## Parts List
 Stepper Motors: https://amzn.to/2D5rVsF
 
-Stepper Drivers: https://amzn.to/2OZqW1W
+Stepper Drivers: https://amzn.to/2OZqW1W (You can use A4988 or DRV8825 or TMC2208 with the TMC2208 being the quietest one)
 
 NodeMCU: https://amzn.to/2I89xDF
 
@@ -29,13 +25,27 @@ Download the correct STL file for your style of tilt rod
 
 **Dont forget to cut the center trace on the stepper motor as shown in the youtube video**
 
-## File setup
+## Software installation
+
+You have 3 options (from easier to harder): ESPHome, Tasmota, or Arduino IDE.
+
+### ESPHome
+
+See https://github.com/tronikos/esphome-blinds
+
+### Tasmota
+
+Use [Tasmota](https://github.com/tasmota/tasmotizer) configured in [Cover mode](https://tasmota.github.io/docs/Blinds-and-Shutters/#using-stepper-motors).
+
+### Arduino IDE
+
+#### File setup
 
 Fill out the entire USER CONFIGURATION section of the code.
 
 You should leave "STEPS_TO_CLOSE" at 12 to start with.  It can be adjusted for your specific blinds
 
-## Home Assistant YAML
+#### Home Assistant YAML
 
 Replace "BlindsMCU" with your MQTT_CLIENT_ID if you changed it in the file setup
 
